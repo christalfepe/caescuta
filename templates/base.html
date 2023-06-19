@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Estilo customizado -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}">
+
+    <!-- Javascript customizado -->
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <title>CAEscuta - {% block titulo %} {% endblock %}</title>
+  </head>
+  <body>
+
+    {% include '_cabecalho.html' %}
+
+    {% block conteudo %} {% endblock %}
+
+
+    <footer class="mt-4 mb-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <p>
+              <a href="/">Home</a>
+              <a href="/feedback">Feedback</a>
+              <a href="/pesquisa">Pesquisa</a>
+              <a href="/usuario">Usuario</a>
+            </p>
+          </div>
+          <div class="col-md-4 d-flex justify-content-end">
+            <a href="" class="btn btn-outline-dark">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="" class="btn btn-outline-dark ml-2">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="" class="btn btn-outline-dark ml-2">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="" class="btn btn-outline-dark ml-2">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %} "></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+
+  </body>
+</html>

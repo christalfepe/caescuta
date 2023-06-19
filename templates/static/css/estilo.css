@@ -1,0 +1,52 @@
+#home {
+	background: #393939;
+}
+.navbar{
+    background: #393939;
+}
+
+.nav-link{
+    position: absolute;
+    width: 81px;
+    height: 35px;
+    left: 635px;
+    top: 48px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 35px;
+
+    color: #B9B9B9;
+}
+
+.caixa {
+	padding: 60px 0;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+footer p a {
+	margin: 5px 15px;
+}
+
+.table-responsive{
+  width: 100% !important;
+}
+
+.table {
+    border: 1px solid red;
+    width: 50% !important; /*Importante manter o !important rs */
+    margin: auto;
+}
+
+.table-status {
+    margin-top: 20px;
+    margin-bottom: 20px !important;
+}
+
+.btn {
+    display: inline-block !important;
+    text-align: center;
+}
+
