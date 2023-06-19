@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+  Home
+{% endblock %}
+
+{% block conteudo %}
+<div class="mt-4 mb-4 d-flex justify-content-center">
+  <h1>Home</h1>
+</div>
+
+<div class="container justify-content-center">
+    <div>
+        <a href="listar/espaco/" class="btn btn-primary col-8">Espaços</a>
+        <a href="listar/disciplina/" class="btn btn-primary col-8">Disciplinas</a>
+        <a href="listar/curso/" class="btn btn-primary col-8">Curso</a>
+        <a href="usuario/" class="btn btn-primary col-8">Usuario</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+  Usuário Copia
+{% endblock %}
+
+{% block conteudo %}
+<h1 class="mt-4 mb-4 d-flex justify-content-center">Lista de usuários</h1>
+<div class="container">
+  <div class="table-responsive">
+      <table class="table table-status">
+        <thead>
+          <tr>
+            <th scope="col">Matrícula</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Curso</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for perfil in object_list %}
+          <tr>
+            <td>{{perfil.matricula}}</td>
+            <td>{{perfil.nome}}</td>
+            <td>{{perfil.curso}}</td>
+              <td>
+                <a class="btn btn-primary col-3">Editar</a>
+                <a class="btn btn-primary col-3">Ver</a>
+              </td>
+          </tr>
+        {% empty %}
+        <tr>
+          <td colspan="3">Nenhum perfil registrado</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>
+
+<a href="/usuario/perfil" class="btn btn-primary">Adicionar usuário</a>
+
+{% endblock %}

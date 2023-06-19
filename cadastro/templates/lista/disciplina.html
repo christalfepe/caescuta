@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block conteudo %}
+
+<h1 class="mt-4 mb-4 d-flex justify-content-center">Lista de usuários</h1>
+<div class="container">
+  <div class="table-responsive">
+      <table class="table table-status">
+        <thead>
+          <tr>
+            <th scope="col">Código da Disciplina</th>
+            <th scope="col">Nome da Disciplina</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for disciplina in object_list %}
+          <tr>
+            <td>{{disciplina.codigo}}</td>
+            <td>{{disciplina.nome}}</td>
+              <td>
+                <a href="{% url 'edita-disciplina' disciplina.pk %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'exclui-disciplina' disciplina.pk %}" class="btn btn-primary">Excluir</a>
+              </td>
+          </tr>
+        {% empty %}
+        <tr>
+          <td colspan="3">Nenhum espaço registrado</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>
+
+<div>
+  <a href="cadastro/disciplina/" class="btn btn-primary">Adicionar Disciplina</a>
+</div>
+
+{% endblock %}

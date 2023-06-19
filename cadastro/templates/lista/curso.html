@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block conteudo %}
+
+<h1 class="mt-4 mb-4 d-flex justify-content-center">Lista de usuários</h1>
+<div class="container">
+  <div class="table-responsive">
+      <table class="table table-status">
+        <thead>
+          <tr>
+            <th scope="col">Código do curso</th>
+            <th scope="col">Nome do curso</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for curso in object_list %}
+          <tr>
+            <td>{{curso.codigo_curso}}</td>
+            <td>{{curso.nome_curso}}</td>
+              <td>
+                <a href="{% url 'edita-curso' curso.pk %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'exclui-curso' curso.pk %}" class="btn btn-primary">Excluir</a>
+              </td>
+          </tr>
+        {% empty %}
+        <tr>
+          <td colspan="3">Nenhum espaço registrado</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>
+
+<div>
+  <a href="cadastro/curso/" class="btn btn-primary">Adicionar Curso</a>
+</div>
+
+{% endblock %}

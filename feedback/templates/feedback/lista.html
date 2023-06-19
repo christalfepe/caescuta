@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block conteudo %}
+
+<h1 class="mt-4 mb-4 d-flex justify-content-center">Lista de Feedback</h1>
+<div class="container">
+  <div class="table-responsive">
+      <table class="table table-status">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Espaço</th>
+            <th scope="col">Feedback</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for lista in object_list %}
+          <tr>
+            <td>{{lista.id}}</td>
+            <td>{{lista.espaco}}</td>
+            <td>{{lista.feedback_esp}}</td>
+              <td>
+                <a href="" class="btn btn-primary">Editar</a>
+                <a href="" class="btn btn-primary">Excluir</a>
+              </td>
+          </tr>
+        {% empty %}
+        <tr>
+          <td colspan="3">Nenhum espaço registrado</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>
+
+<div>
+  <a href="feedback/espaco/" class="btn btn-primary">Adicionar Feedback</a>
+</div>
+
+{% endblock %}

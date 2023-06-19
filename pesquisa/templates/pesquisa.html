@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+  Pesquisa
+{% endblock %}
+
+{% block conteudo %}
+<h1 class="mt-4 mb-4 d-flex justify-content-center">Lista de pesquisa</h1>
+<div class="col-10 d-flex justify-content-center">
+<table class="table mt-5 mb-5 ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Pesquisa</th>
+      <th scope="col">Assunto</th>
+      <th scope="col">Data</th>
+        <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+        <td>
+          <a class="btn btn-primary col-5">Responder</a>
+        </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+        <td>
+          <div>
+          <a class="btn btn-primary col-5">Responder</a>
+          </div>
+        </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+        <td>
+          <a class="btn btn-primary col-5">Responder</a>
+        </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+{% endblock %}

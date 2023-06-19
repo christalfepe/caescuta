@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block conteudo %}
+
+<h1 class="mt-4 mb-4 d-flex justify-content-center">Lista de espaço</h1>
+<div class="container">
+  <div class="table-responsive">
+      <table class="table table-status">
+        <thead>
+          <tr>
+            <th scope="col">Código do curso</th>
+            <th scope="col">Nome do Espaço</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for espaco in object_list %}
+          <tr>
+            <td>{{espaco.id}}</td>
+            <td>{{espaco.nome_espaco}}</td>
+              <td>
+                <a href="{% url 'edita-espaco' espaco.pk %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'exclui-espaco' espaco.pk %}" class="btn btn-primary">Excluir</a>
+              </td>
+          </tr>
+        {% empty %}
+        <tr>
+          <td colspan="3">Nenhum espaço registrado</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>
+
+<div>
+  <a href="cadastro/espaco/" class="btn btn-primary">Adicionar Espaco</a>
+</div>
+
+{% endblock %}
