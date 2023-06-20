@@ -1,4 +1,4 @@
-# caescuta
+# CAEscuta
 Trabalho feito para disciplina de Desenvolvimento de Sistemas WEB.
 O projeto consiste em uma plataforma de gestão contínua de pessoas 
 voltado para alunos da universidade, onde estes podem dar feedbacks 
