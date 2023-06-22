@@ -56,6 +56,15 @@ h1{
     background: #393939;
 }
 
+page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+content-wrap {
+  padding-bottom: 2.5rem;    /* altura do rodapé */
+}
+
 .container{
     justify-content: center !important;
     align-items: center !important;
