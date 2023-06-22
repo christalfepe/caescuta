@@ -4,8 +4,11 @@
         <div class="container">
 
           <a href="#" class="navbar-brand">
-            <img src="{% static 'img/caesc.png' %}" width="100">
+            <img src="{% static 'img/logo.png' %}" width="80">
           </a>
+          <p>
+            Seja bem-vindo(a) {{ user.get_full_name }}!
+          </p>
 
           <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
             <span class="navbar-toggler-icon"></span>
@@ -20,13 +23,17 @@
                 <a href="/feedback" class="nav-link">Feedback</a>
               </li>
               <li class="nav-item">
-                <a href="/usuario" class="nav-link">Usuário</a>
+                <a href="/usuarios/lista" class="nav-link">Usuário</a>
               </li>
               <li class="nav-item">
                 <a href="/pesquisa" class="nav-link">Pesquisas</a>
               </li>
               <li class="nav-item">
-                <a href="" class="btn btn-outline-light ml-4">Entrar</a>
+                {% if user.is_anonymous %}
+                <a href="{% url 'login' %}" class="btn btn-outline-light ml-4">Entrar</a>
+                {% else %}
+                <a href="{% url 'logout' %}" class="btn btn-outline-light ml-4">Sair</a>
+                {% endif %}
               </li>
             </ul>
           </div>

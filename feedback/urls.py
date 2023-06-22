@@ -19,7 +19,7 @@ from .views import *
 
 urlpatterns = [
     path('',Feedback.as_view(),name='feedback'),
-    path('disciplina/',CreateFeedback_Disciplina.as_view(),name='cadastrar-feedback-disciplina'),
-    path('espaco/',CreateFeedback_Espaco.as_view(),name='cadastrar-feedback-espaco'),
-    path('espaco/lista/',ListFeedback_Espaco.as_view(),name='lista-feedback-espaco'),
+    path('disciplina/',CreateFeedbackDisciplina.as_view(),name='cadastrar-feedback-disciplina'),
+    path('espaco/',CreateFeedbackEspaco.as_view(),name='cadastrar-feedback-espaco'),
+    path('espaco/lista/', ListFeedbackEspaco.as_view(),name='lista-feedback-espaco'),
 ]

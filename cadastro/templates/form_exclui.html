@@ -6,7 +6,7 @@ Cadastrar
 {% endblock %}
 
 {% block conteudo %}
-
+{% if user.is_staff %}
 <h1>Excluir registros</h1>
 
 <p class="lead">
@@ -24,5 +24,9 @@ Cadastrar
     <button type="submit" class="btn btn-danger">Excluir</button>
 
 </form>
+
+{% else %}
+<p> Você não tem acesso</p>
+{% endif %}
 
 {% endblock %}

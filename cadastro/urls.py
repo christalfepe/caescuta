@@ -19,9 +19,9 @@ from .views import *
 
 urlpatterns = [
     path('',Home.as_view(),name='home'),
-    path('cadastro/disciplina/', CreateDisciplina.as_view(), name='cadastrar-disciplina'),
-    path('cadastro/espaco/', CreateEspaco.as_view(), name='cadastra-espaco'),
-    path('cadastro/curso/', CreateCurso.as_view(), name='cadastra-curso'),
+    path('disciplina/', CreateDisciplina.as_view(), name='cadastrar-disciplina'),
+    path('espaco/', CreateEspaco.as_view(), name='cadastra-espaco'),
+    path('curso/', CreateCurso.as_view(), name='cadastra-curso'),
     path('editar/disciplina/<int:pk>/', UpdateDisciplina.as_view(), name='edita-disciplina'),
     path('editar/espaco/<int:pk>/', UpdateEspaco.as_view(), name='edita-espaco'),
     path('editar/curso/<int:pk>/', UpdateCurso.as_view(), name='edita-curso'),

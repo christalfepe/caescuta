@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
-
 {% load static %}
-
 {% block titulo %}
   Home
 {% endblock %}
 
 {% block conteudo %}
+{% if user.is_anonymous %}
+    <p>Você não tem acesso</p>
+    <a href="{% url 'login' %}" class="btn btn-primary col-8">Entrar</a>
+{% else %}
 <div class="mt-4 mb-4 d-flex justify-content-center">
   <h1>Home</h1>
 </div>
@@ -21,4 +23,5 @@
         {% endif %}
     </div>
 </div>
+{% endif %}
 {% endblock %}

@@ -3,10 +3,11 @@
 {% load static %}
 
 {% block titulo %}
-  Usuário Copia
+  Usuários
 {% endblock %}
 
 {% block conteudo %}
+{% if user.is_staff %}
 <h1 class="mt-4 mb-4 d-flex justify-content-center">Lista de usuários</h1>
 <div class="container">
   <div class="table-responsive">
@@ -23,9 +24,9 @@
         {% for perfil in object_list %}
           <tr>
             <td>{{perfil.matricula}}</td>
-            <td>{{perfil.nome}}</td>
-            <td>{{perfil.curso}}</td>
-              <td style="width: 300px; text-align: center!important; justify-items: center !important;">
+            <td>{{perfil.email}}</td>
+            <td>x</td>
+              <td>
                 <a class="btn btn-primary col-3">Editar</a>
                 <a class="btn btn-primary col-3">Ver</a>
               </td>
@@ -39,7 +40,8 @@
       </table>
   </div>
 </div>
-
-<a href="/usuario/perfil" class="btn btn-primary">Adicionar usuário</a>
+{% else %}
+<p>Você não tem acesso a essa página</p>
+{% endif %}
 
 {% endblock %}

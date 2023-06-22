@@ -4,7 +4,7 @@
 
 {% block conteudo %}
 
-<h1 class="mt-4 mb-4 d-flex justify-content-center">Lista de usuários</h1>
+<h1 class="mt-4 mb-4 d-flex justify-content-center">Lista de Cursos</h1>
 <div class="container">
   <div class="table-responsive">
       <table class="table table-status">
@@ -36,7 +36,7 @@
 </div>
 
 <div>
-  <a href="cadastro/curso/" class="btn btn-primary">Adicionar Curso</a>
+  <a href="{% url 'cadastra-curso' %}" class="btn btn-primary">Adicionar Curso</a>
 </div>
 
 {% endblock %}
