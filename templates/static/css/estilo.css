@@ -1,11 +1,11 @@
 #home {
-	background: #ffc107;
+	background: #393939;
 	color: white;
 }
 
 .caixa {
 	padding: 60px 0;
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #353535;
 }
 
 footer{
@@ -75,7 +75,7 @@ td{
 }
 
 .bg-warning{
-    background-color: #fadf02 !important;
+    background-color: #643173 !important;
 }
 
 .btn-outline-light{
