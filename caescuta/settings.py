@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'usuarios',
     'cadastro.apps.CadastroConfig',
     'feedback.apps.FeedbackConfig',
+    'pesquisa.apps.PesquisaConfig',
 ]
 
 
@@ -126,6 +127,9 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'templates/static')
+]
 
 AUTH_USER_MODEL = 'usuarios.ModelUsuario'
 
