@@ -4,6 +4,16 @@
 
 {% block conteudo %}
 
+{% if user.is_anonymous %}
+<div class="d-flex justify-content-center">
+    <p>Você não tem acesso</p>
+    </div>
+<div class=" d-flex justify-content-center">
+
+    <a href="{% url 'login' %}" class="btn btn-primary col-2">Entrar</a>
+</div>
+{% else %}
+
 <h1 class="mt-4 mb-4 d-flex justify-content-center">Lista de usuários</h1>
 <div class="container">
   <div class="table-responsive">
@@ -34,9 +44,12 @@
       </table>
   </div>
 </div>
-
-<div>
+{% if user.is_staff %}
+<div class="d-flex justify-content-center">
   <a href="{% url 'cadastrar-disciplina' %}" class="btn btn-primary">Adicionar Disciplina</a>
 </div>
+{% else %}
+{% endif %}
+{% endif %}
 
 {% endblock %}

@@ -21,11 +21,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <link rel="icon" type="image/png" href="{% static 'img/cae.png' %}">
-    <title>CAEscuta - {% block titulo %} {% endblock %}</title>
+    <title>CAEscuta - Login</title>
   </head>
   <body>
-
+  {% include '_cabecalho.html' %}
 {% block conteudo %}
+<div class="d-flex justify-content-center">
     <form class="form-signin" method="post" autocomplete="off">
         {% csrf_token %}
         <h1 class="h3 mb-3 font-weight-normal">Informe seus dados</h1>
@@ -33,10 +34,14 @@
         <label for="username" class="sr-only">E-mail</label>
         <!-- autofocus - quando a pag. carregar, vai dar foco a este campo -->
         <input type="email" id="username" name="username" class="form-control" placeholder="Informe seu e-mail" required autofocus>
+        <br>
         <label for="password" class="sr-only">Senha</label>
         <input type="password" id="password" name="password" class="form-control" placeholder="Informe sua senha" required>
-
+        <br>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Acessar</button>
         <p class="mt-5 mb-3 text-muted">&copy; {% now 'Y'%}</p> <!-- apresentar o ano -->
     </form>
+    </div>
 {% endblock %}
+  </body>
+</html>

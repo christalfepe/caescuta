@@ -22,3 +22,9 @@ class CreateFeedbackEspaco(CreateView):
 class ListFeedbackEspaco(ListView):
     model = FeedbackEspaco
     template_name = 'feedback/lista_espaco.html'
+    paginate_by = 10
+
+class ListFeedbackDisciplina(ListView):
+    model = FeedbackDisciplina
+    template_name = 'feedback/lista_disciplina.html'
+    paginate_by = 10

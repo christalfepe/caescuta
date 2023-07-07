@@ -1,24 +1,38 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% load crispy_forms_tags %}
+
 {% block titulo %}
 Cadastrar
 {% endblock %}
 
 {% block conteudo %}
+{% if user.is_anonymous %}
+<div class="d-flex justify-content-center">
+    <p>Você não tem acesso</p>
+    </div>
+<div class=" d-flex justify-content-center">
 
-<h1>Cadastro</h1>
-
+    <a href="{% url 'login' %}" class="btn btn-primary col-2">Entrar</a>
+</div>
+{% else %}
+<div class="d-flex justify-content-center">
+<h1>Feedback</h1>
+</div>
+<div class="d-flex justify-content-center">
 <p class="lead">
     Preencha todos os campos obrigatórios
 </p>
-
+</div>
+<div class="d-flex justify-content-center">
 <form action="" method="POST">
     {% csrf_token %}
-    {{form.as_p}}
-
+    {{form|crispy}}
+    <div class="d-flex justify-content-center">
     <button type="submit" class="btn btn-primary">Cadastrar</button>
-
+    </div>
 </form>
-
+</div>
+{% endif %}
 {% endblock %}

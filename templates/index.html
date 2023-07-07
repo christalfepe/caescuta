@@ -7,7 +7,9 @@
 {% block conteudo %}
 {% if user.is_anonymous %}
     <p>Você não tem acesso</p>
-    <a href="{% url 'login' %}" class="btn btn-primary col-8">Entrar</a>
+    <div style="display: grid; border-radius: 30px !important; grid-template-columns: 100px; justify-items: center; justify-content: center; align-items: center;">
+        <a href="{% url 'login' %}" class="btn btn-primary col-8">Entrar</a>
+    </div>
 {% else %}
 <div class="mt-4 mb-4 d-flex justify-content-center">
   <h1>Home</h1>

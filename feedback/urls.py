@@ -20,6 +20,7 @@ from .views import *
 urlpatterns = [
     path('',Feedback.as_view(),name='feedback'),
     path('disciplina/',CreateFeedbackDisciplina.as_view(),name='cadastrar-feedback-disciplina'),
+    path('disciplina/lista/', ListFeedbackDisciplina.as_view(),name='lista-feedback-disciplina'),
     path('espaco/',CreateFeedbackEspaco.as_view(),name='cadastrar-feedback-espaco'),
     path('espaco/lista/', ListFeedbackEspaco.as_view(),name='lista-feedback-espaco'),
 ]

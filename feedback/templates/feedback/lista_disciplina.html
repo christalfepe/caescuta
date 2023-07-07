@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block conteudo %}
+{% if user.is_anonymous %}
+<div class="d-flex justify-content-center">
+    <p>Você não tem acesso</p>
+    </div>
+<div class=" d-flex justify-content-center">
+
+    <a href="{% url 'login' %}" class="btn btn-primary col-2">Entrar</a>
+</div>
+{% else %}
+
+<h1 class="mt-4 mb-4 d-flex justify-content-center">Lista de Feedback</h1>
+<div class="container">
+  <div class="table-responsive">
+      <table class="table table-status">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Espaço</th>
+            <th scope="col">Feedback</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for lista in object_list %}
+          <tr>
+            <td>{{lista.id}}</td>
+            <td>{{lista.espaco}}</td>
+            <td>{{lista.feedback_esp}}</td>
+          </tr>
+        {% empty %}
+        <tr>
+          <td colspan="3">Nenhum espaço registrado</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <a href="{% url 'cadastrar-feedback-disciplina' %}" class="btn btn-primary">Adicionar Feedback</a>
+</div>
+{% endif %}
+{% endblock %}

@@ -7,6 +7,15 @@
 {% endblock %}
 
 {% block conteudo %}
+{% if user.is_anonymous %}
+<div class="d-flex justify-content-center">
+    <p>Você não tem acesso</p>
+    </div>
+<div class=" d-flex justify-content-center">
+
+    <a href="{% url 'login' %}" class="btn btn-primary col-2">Entrar</a>
+</div>
+{% else %}
 {% if user.is_staff %}
 <h1 class="mt-4 mb-4 d-flex justify-content-center">Lista de usuários</h1>
 <div class="container">
@@ -16,20 +25,21 @@
           <tr>
             <th scope="col">Matrícula</th>
             <th scope="col">Nome</th>
-            <th scope="col">Curso</th>
-            <th scope="col">Ações</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
         {% for perfil in object_list %}
           <tr>
             <td>{{perfil.matricula}}</td>
+            <td>{{perfil.get_full_name}}</td>
             <td>{{perfil.email}}</td>
-            <td>x</td>
-              <td>
-                <a class="btn btn-primary col-3">Editar</a>
-                <a class="btn btn-primary col-3">Ver</a>
-              </td>
+            {% if perfil.is_staff %}
+            <td>Equipe</td>
+            {% else %}
+            <td>Usuário</td>
+            {% endif %}
           </tr>
         {% empty %}
         <tr>
@@ -41,7 +51,9 @@
   </div>
 </div>
 {% else %}
+<div class="mt-4 mb-4 d-flex justify-content-center">
 <p>Você não tem acesso a essa página</p>
+</div>
 {% endif %}
-
+{% endif %}
 {% endblock %}

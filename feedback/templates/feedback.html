@@ -7,6 +7,15 @@
 {% endblock %}
 
 {% block conteudo %}
+{% if user.is_anonymous %}
+<div class="d-flex justify-content-center">
+    <p>Você não tem acesso</p>
+    </div>
+<div class=" d-flex justify-content-center">
+
+    <a href="{% url 'login' %}" class="btn btn-primary col-2">Entrar</a>
+</div>
+{% else %}
 <h1 class="mt-4 mb-4 d-flex justify-content-center">Tipos de feedback</h1>
 <div class="container justify-content-center">
     <div style="display: grid; border-radius: 5px !important; grid-template-columns: 600px; justify-items: center; justify-content: center; align-items: center;">
@@ -14,7 +23,7 @@
         <a href="disciplina/" class="btn btn-primary col-8">Disciplinas</a>
     </div>
 </div>
-
+{% endif %}
 
 
 {% endblock %}
