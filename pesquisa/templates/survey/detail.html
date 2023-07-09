@@ -3,9 +3,9 @@
 {% block conteudo %}
 <div class="ui center aligned basic very padded segment">
     <h1 class="ui header">{{ survey.title }}</h1>
-    <h3 class="ui header">You have {{ num_submissions }} submissions</h3>
-    <h3 class="ui header">Survey URL: <a href="{{public_url}}">{{ public_url }}</a></h3>
-    <h1 class="ui header dividing">Results</h1>
+    <h3 class="ui header">Você tem {{ num_submissions }} submissions</h3>
+    <h3 class="ui header">URL da pesquisa: <a href="{{public_url}}">{{ public_url }}</a></h3>
+    <h1 class="ui header dividing">Resultados</h1>
     {% for question in questions %}
     <div class="ui basic padded segment left aligned">
         <h4 class="ui header">

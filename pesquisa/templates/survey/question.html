@@ -2,7 +2,7 @@
 
 {% block conteudo %}
 <div class="ui center aligned basic very padded segment">
-    <h1 class="ui header">Create a new question</h1>
+    <h1 class="ui header">Criar nova questão</h1>
     <div class="ui container left aligned">
         <form class="ui form {% if form.errors %}error{% endif %}" method="post" novalidate>
             {% csrf_token %}
@@ -12,12 +12,12 @@
                 {{ field }}
             </div>
             {% endfor %}
-            <button type="submit" class="ui primary button">Create question</button>
+            <button type="submit" class="ui primary button">Criar questão</button>
             <a href="{% url 'survey-edit' survey.pk %}">
-                <div class="ui button">Cancel</div>
+                <div class="ui button">Cancelar</div>
             </a>
             <div class="ui message error">
-                <div class="header">We had some issues</div>
+                <div class="header">Tivemos alguns problemas</div>
                 <ul class="list">
                     {% for field in form %}
                     {% for error in field.errors %}

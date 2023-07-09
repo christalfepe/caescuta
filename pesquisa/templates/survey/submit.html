@@ -12,7 +12,7 @@
     }
 </style>
 <div class="ui center aligned basic very padded segment">
-    <h1 class="ui header dividing">Your answers to {{ survey.title }}</h1>
+    <h1 class="ui header dividing">Suas respostas para {{ survey.title }}</h1>
     <form method="post" novalidate>
         {% csrf_token %}
         {{ formset.management_form }}
@@ -20,7 +20,7 @@
         <div class="ui basic padded segment left aligned">
             <div class="ui form {% if form.errors %}error{% endif %}">
                 <h4 class="ui header">
-                    Question {{ forloop.counter }}: {{ question.prompt }}
+                    Questão {{ forloop.counter }}: {{ question.prompt }}
                 </h4>
                 {% for field in form %}
                 <div class="field {% if field.errors %}error{% endif %}">
@@ -28,7 +28,7 @@
                 </div>
                 {% endfor %}
                 <div class="ui message error">
-                    <div class="header">We had some issues</div>
+                    <div class="header">Tivemos alguns problemas</div>
                     <ul class="list">
                         {% for field in form %}
                         {% for error in field.errors %}
@@ -43,7 +43,7 @@
             </div>
         </div>
         {% endfor %}
-        <button type="submit" class="ui primary button">Submit</button>
+        <button type="submit" class="ui primary button">Submeter</button>
     </form>
 
 </div>
