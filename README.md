@@ -20,6 +20,17 @@ Opcional:
 
         -m pip --upgrade pip
 
+## Inserção de superuser via terminal
+Executar o comando:
+
+        python manage.py createsuperuser 
+
+## Atualização do banco de dados
+Caso haja inserção de usuários via terminal, após executar os comandos:
+
+        python manage.py migrate 
+        python manage.py makemigrations
+
 ## Execução do projeto
 Para execução do projeto é necessário o comando
 
