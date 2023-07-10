@@ -1,5 +1,3 @@
-from django.db import models
-
 # Create your models here.
 from django.db import models
 
@@ -8,6 +6,13 @@ from django.db import models
 
 #from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import AbstractUser , BaseUserManager
+# from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.db import models
+
+
+# AbstractBaseUser x AbstractUser: ambos tratam de um usuário abstrato,
+# porém, o BaseUser vem sem algumas funcionalidades prontas do Django.
 
 class UsuarioManager(BaseUserManager): #gerenciado do usuario
     use_in_migrations = True

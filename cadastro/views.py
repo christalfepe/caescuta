@@ -1,8 +1,8 @@
-from django.shortcuts import render
-from django.views.generic.base import TemplateView
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView
-from .models import *
 from django.urls import reverse_lazy
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView
+from django.views.generic.base import TemplateView
+
+from .models import *
 
 
 class Home(TemplateView):

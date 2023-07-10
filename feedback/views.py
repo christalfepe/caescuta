@@ -1,6 +1,8 @@
-from django.views.generic import TemplateView, CreateView, ListView
-from .models import FeedbackDisciplina, FeedbackEspaco
 from django.urls import reverse_lazy
+from django.views.generic import TemplateView, CreateView, ListView
+
+from .models import FeedbackDisciplina, FeedbackEspaco
+
 
 class Feedback(TemplateView):
     template_name = 'feedback.html'

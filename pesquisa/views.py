@@ -1,14 +1,14 @@
-from django.db import transaction
-from django.http import Http404
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+from django.db import transaction
 from django.forms.formsets import formset_factory
+from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView
-from django.core.paginator import Paginator
 
-
-from .models import Survey, Question, Answer, Submission
 from .forms import SurveyForm, QuestionForm, OptionForm, AnswerForm, BaseAnswerFormSet
+from .models import Survey, Question, Answer, Submission
+
 
 class LandingView(TemplateView):
     template_name = "landing.html"

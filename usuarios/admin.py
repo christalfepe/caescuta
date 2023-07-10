@@ -1,10 +1,9 @@
 from django.contrib import admin
-
 # imports necessários para administração do nosso usuário
 from django.contrib.auth.admin import UserAdmin
+
 from .forms import ModelUsuarioCreateForm, ModelUsuarioChangeForm
 from .models import ModelUsuario
-
 
 
 @admin.register(ModelUsuario)

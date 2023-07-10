@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+<br>
+<div class="d-flex justify-content-center">
+        <a href="{% url 'survey-question-create' survey.pk %}">
+            <div class="btn btn-primary">Adicionar questão</div>
+        </a>
+        {% if questions|length > 0 %}
+        <div class="ui divider"></div>
+        <form style="display: inline-block;" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Ativar pesquisa</button>
+        </form>
+        <a href="{% url 'survey-list' %}">
+            <div class="btn btn-danger">Voltar</div>
+        </a>
+        {% endif %}
+</div>
+    {% for question in questions %}
+        <div class="ui basic padded segment">
+            <h4 class="ui header">
+                Questão {{ forloop.counter }} / {{ questions|length }}
+            </h4>
+            <p>
+            {{ question.prompt }}
+            </p>
+            <ul>
+                {% for option in question.option_set.all %}
+                <li>
+                    {{ forloop.counter }}) {{option.text}}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+{% endfor %}
+
+
+{% endblock %}

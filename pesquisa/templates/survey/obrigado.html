@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<div class="d-flex justify-content-center">
+    <h1 class="ui header">Obrigado por responder a pesquisa: {{ survey.title }}!</h1>
+</div>
+    <div class="d-flex justify-content-center">
+        <a href="{% url 'pesquisa' %}" class="btn btn-primary">Voltar para pesquisas</a>
+
+</div>
+{% endblock %}

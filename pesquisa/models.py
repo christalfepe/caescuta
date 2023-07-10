@@ -1,6 +1,7 @@
 from django.db import models
-from usuarios.models import ModelUsuario
 from django.utils import timezone
+
+from usuarios.models import ModelUsuario
 
 
 class Survey(models.Model):

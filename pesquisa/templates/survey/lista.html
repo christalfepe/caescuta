@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<div class="d-flex justify-content-center">
+       <h1 class="ui header">Pesquisas abertas</h1>
+</div>
+<div class="ui center aligned basic very padded segment">
+    {% if surveys %}
+
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Data de criação</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for survey in surveys %}
+            <tr>
+                <td>{{ survey.title }}</td>
+                <td>{{ survey.created_at }}</td>
+                <td>
+                    {% if survey.is_active %}
+                    <a href="{% url 'survey-start' survey.pk %}">
+                        <div class="ui button">Responder</div>
+                    </a>
+                    {% else %}
+
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h2 class="ui header">Pesquisas
+        <div class="sub header">Não existe novas pesquisas abertas</div>
+    </h2>
+    {% endif %}
+
+<div class="d-flex justify-content-center">
+    <span class="step-links">
+        {% if surveys.has_previous %}
+            <a href="?page={{ surveys.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        <span class="current">
+            {{ surveys.number }} de {{ surveys.paginator.num_pages }}
+        </span>
+
+        {% if surveys.has_next %}
+            <a href="?page={{ surveys.next_page_number }}">Próxima</a>
+        {% endif %}
+    </span>
+</div>
+</div>
+{% endblock %}

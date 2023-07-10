@@ -1,7 +1,9 @@
-from django.shortcuts import render
-from django.views.generic import CreateView, ListView
+from django.views.generic import ListView
 from .models import *
-from django.urls import reverse_lazy
+from django.views.generic import ListView
+
+from .models import *
+
 
 # Create your views here.
 class Usuario(ListView):

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<style>
+    form .field ul {
+        list-style: none;
+        padding: 0 1rem;
+    }
+
+    form .field li {
+        margin-bottom: 0.3rem;
+    }
+</style>
+<div class="d-flex justify-content-center">
+    <h1 class="ui header dividing">Você está respondendo a pesquisa: {{ survey.title }}</h1>
+</div>
+<div class="d-flex justify-content-center">
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ formset.management_form }}
+        {% for question, form in question_forms %}
+        <div class="ui basic padded segment left aligned">
+            <div class="ui form {% if form.errors %}error{% endif %}">
+                <h4 class="ui header">
+                    Questão {{ forloop.counter }}: {{ question.prompt }}
+                </h4>
+                {% for field in form %}
+                <div class="field {% if field.errors %}error{% endif %}">
+                    {{ field }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-success">Responder</button>
+    </form>
+
+</div>
+{% endblock %}
