@@ -14,6 +14,9 @@
 {% else %}
 
 <h1 class="mt-4 mb-4 d-flex justify-content-center">Lista de Feedback</h1>
+<div class=" d-flex justify-content-center">
+
+</div>
 <div class="container">
   <div class="table-responsive">
       <table class="table table-status">
@@ -28,8 +31,8 @@
         {% for lista in object_list %}
           <tr>
             <td>{{lista.id}}</td>
-            <td>{{lista.espaco}}</td>
-            <td>{{lista.feedback_esp}}</td>
+            <td>{{lista.disciplina}}</td>
+            <td>{{lista.feedback_dis}}</td>
           </tr>
         {% empty %}
         <tr>

@@ -1,30 +1,4 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="pt-br">
-
-  <head>
-    <!-- Meta tags Obrigatórias -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-
-    <!-- Estilo customizado -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}">
-
-    <!-- Javascript customizado -->
-    <script src="{% static 'js/script.js' %}"></script>
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-    <link rel="icon" type="image/png" href="{% static 'img/cae.png' %}">
-    <title>CAEscuta - Login</title>
-  </head>
-  <body>
-  {% include '_cabecalho.html' %}
+{% extends 'base.html' %}
 {% block conteudo %}
 <div class="d-flex justify-content-center">
     <form class="form-signin" method="post" autocomplete="off">
@@ -43,5 +17,3 @@
     </form>
     </div>
 {% endblock %}
-  </body>
-</html>

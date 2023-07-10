@@ -1,52 +1,88 @@
 {% extends "base.html" %}
 
+
 {% block conteudo %}
-<div class="ui center aligned basic very padded segment">
-    <h1 class="ui header">Bem vindo(a) {{ request.user.username }}</h1>
-    <a href="{% url 'survey-create' %}">
-        <div class="ui primary button">Crie uma nova pesquisa</div>
-    </a>
+{% if user.is_staff %}
+<div class="d-flex justify-content-center">
+       <h1 class="ui header">Minhas pesquisas</h1>
 </div>
 <div class="ui center aligned basic very padded segment">
-    {% if survey %}
-    <h2 class="ui header">Suas pesquisas</h2>
+    {% if surveys %}
     <table class="ui celled table">
         <thead>
             <tr>
                 <th>Título</th>
-                <th>Criado em</th>
+                <th>Data de criação</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            {% for survey in survey %}
+            {% for survey in surveys %}
             <tr>
                 <td>{{ survey.title }}</td>
                 <td>{{ survey.created_at }}</td>
                 <td>
-                    {% if survey.is_active %}
+
                     <a href="{% url 'survey-detail' survey.pk %}">
-                        <div class="ui button">ver</div>
+                        <div class="btn btn-primary">Detalhes</div>
                     </a>
-                    {% else %}
+                </td>
+                <td>
                     <a href="{% url 'survey-edit' survey.pk %}">
-                        <div class="ui button">editar</div>
+                        <div class="btn btn-primary">Editar</div>
                     </a>
-                    {% endif %}
+                </td>
+                <td>
                     <form method="post" action="{% url 'survey-delete' survey.pk %}" style="display: inline-block;">
                         {% csrf_token %}
-                        <button class=" ui button">deletar</button>
+                        <button class="btn btn-warning">Deletar</button>
                     </form>
+                </td>
+                <td>
+                    {% if survey.is_active %}
+                    <form method="post" action="{% url 'survey-desativar' survey.pk %}" style="display: inline-block;">
+                        {% csrf_token %}
+                        <button class=" btn btn-danger">Desativar</button>
+                    </form>
+                    {% else %}
+                    <form method="post" action="{% url 'survey-ativar' survey.pk %}" style="display: inline-block;">
+                        {% csrf_token %}
+                        <button class=" btn btn-success">Ativar</button>
+                    </form>
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
     {% else %}
-    <h2 class="ui header">Suas pesquisas
-        <div class="sub header">Você não tem pesquisas abertas. Que tal criar uma?</div>
+    <div class="d-flex justify-content-center">
+       <h1 class="ui header">Minhas pesquisas</h1>
+    </div>
+        <div class="d-flex justify-content-center">Você não tem pesquisas abertas. Que tal criar uma?</div>
     </h2>
     {% endif %}
 
+<div class="d-flex justify-content-center">
+    <span class="step-links">
+        {% if surveys.has_previous %}
+            <a href="?page={{ surveys.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        <span class="current">
+            {{ surveys.number }} de {{ surveys.paginator.num_pages }}
+        </span>
+
+        {% if surveys.has_next %}
+            <a href="?page={{ surveys.next_page_number }}">Próxima</a>
+        {% endif %}
+    </span>
 </div>
+<div class="d-flex justify-content-center">
+  <a href="{% url 'survey-create' %}" class="btn btn-primary">Adicionar pesquisa</a>
+</div>
+</div>
+{% else %}
+<p> Você não tem acesso</p>
+{% endif %}
 {% endblock %}

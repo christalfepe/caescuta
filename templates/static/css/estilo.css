@@ -1,11 +1,11 @@
 #home {
-	background: #393939;
+	background: #ffc107;
 	color: white;
 }
 
 .caixa {
 	padding: 60px 0;
-	border-bottom: 1px solid #353535;
+	border-bottom: 0px solid ;
 }
 
 footer{
@@ -53,18 +53,7 @@ h1{
 }
 
 .body{
-    padding: 0;
-    margin: 0;
-    background: #454d6b !important;
-}
-
-page-container {
-  position: relative;
-  min-height: 100vh;
-}
-
-content-wrap {
-  padding-bottom: 2.5rem;    /* altura do rodapé */
+    background: #393939;
 }
 
 .container{
@@ -77,12 +66,11 @@ td{
 }
 
 .bg-warning{
-    color: #B9B9B9;
-    background-color: #225560 !important;
+    background-color: #fadf02 !important;
 }
 
 .btn-outline-light{
-    background-color: #643173 !important;
+    background-color: #2caa58 !important;
 }
 
 .justify-content-center{

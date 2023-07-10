@@ -18,5 +18,7 @@ class Espaco(models.Model):
 class Curso(models.Model):
     codigo_curso = models.IntegerField(primary_key=True, verbose_name="Código do Curso")
     nome_curso = models.CharField(max_length=150, verbose_name="Nome do Curso")
+
+
     def __str__(self):
         return "{} ({})".format(self.codigo_curso,self.nome_curso)

@@ -73,13 +73,40 @@ class DeleteEspaco(DeleteView):
 class ListDisciplina(ListView):
     model = Disciplina
     template_name = 'lista/disciplina.html'
+    paginate_by = 5
+
+    def get_queryset(self):
+
+        txt = self.request.GET.get('disciplina')
+        if txt:
+            disciplinas = Disciplina.objects.filter(nome__icontains=txt)
+        else:
+            disciplinas = Disciplina.objects.all()
+        return disciplinas
 
 
 class ListCurso(ListView):
     model = Curso
     template_name = 'lista/curso.html'
+    paginate_by = 5
 
+    def get_queryset(self):
 
+        txt = self.request.GET.get('curso')
+        if txt:
+            cursos = Curso.objects.filter(nome_curso__icontains =txt)
+        else:
+            cursos = Curso.objects.all()
+        return cursos
 class ListEspaco(ListView):
     model = Espaco
     template_name = 'lista/espaco.html'
+    paginate_by = 5
+    def get_queryset(self):
+
+        txt = self.request.GET.get('espaco')
+        if txt:
+            espacos = Espaco.objects.filter(nome_espaco__icontains =txt)
+        else:
+            espacos = Espaco.objects.all()
+        return espacos

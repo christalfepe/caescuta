@@ -8,8 +8,10 @@ urlpatterns = [
     path("lista/", views.survey_list, name="survey-list"),
     path("minhalista/", views.minha_lista, name="minha-lista"),
     path("<int:pk>/", views.detail, name="survey-detail"),
-    path("create/", views.create, name="survey-create"),
+    path("criar/", views.create, name="survey-create"),
     path("<int:pk>/deletar/", views.delete, name="survey-delete"),
+    path("<int:pk>/desativar/", views.desativar, name="survey-desativar"),
+    path("<int:pk>/ativar/", views.ativar, name="survey-ativar"),
     path("<int:pk>/editar/", views.edit, name="survey-edit"),
     path("<int:pk>/questao/", views.question_create, name="survey-question-create"),
     path(

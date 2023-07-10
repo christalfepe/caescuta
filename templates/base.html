@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <link rel="icon" type="image/png" href="{% static 'img/cae.png' %}">
-    <title> CAEscuta - {% block titulo %} {% endblock %}</title>
+    <title>CAEscuta - {% block titulo %} {% endblock %}</title>
   </head>
   <body>
 
@@ -28,36 +28,8 @@
     {% block conteudo %} {% endblock %}
 
 
-    <footer style="position: absolute; bottom: 0; width: 100%;" class="mt-4 mb-4">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <p style="text-align: left">
-              <a href="/">Home</a>
-              <a href="/feedback">Feedback</a>
-              <a href="/pesquisa">Pesquisas</a>
-              <a href="/usuarios">Usuários</a>
-            </p>
-          </div>
-          <div style="text-align: right" class="col-md-4 d-flex justify-content-end">
-            <a href="" class="btn btn-outline-dark">
-              <i class="fab fa-facebook"></i>
-            </a>
-            <a href="" class="btn btn-outline-dark ml-2">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="" class="btn btn-outline-dark ml-2">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="" class="btn btn-outline-dark ml-2">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </div>
-        </div>
-        <p style="text-align: center" class="mt-5 mb-3 text-muted">&copy; {% now 'Y'%}</p>
-      </div>
-    </footer>
 
+    {% include '_footer.html' %}
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
     <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %} "></script>

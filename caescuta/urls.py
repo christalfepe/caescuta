@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('usuarios.urls')),
     path('cadastro/', include('cadastro.urls')),
     path('feedback/',include('feedback.urls')),
+    path('pesquisa/', include('pesquisa.urls')),
 ]

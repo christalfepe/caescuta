@@ -14,6 +14,15 @@
 {% else %}
 
 <h1 class="mt-4 mb-4 d-flex justify-content-center">Lista de Cursos</h1>
+<div class=" d-flex justify-content-center">
+
+<form action="?" method="GET">
+  <input type="text" name="curso" value="{{request.GET.curso}}" placeholder="Digite um curso">
+  <button type="submit" class="btn btn-primary">Buscar</button>
+  <a href="{% url 'lista-curso' %}" class="btn btn-light">Limpar</a>
+</form>
+</div>
+<hr>
 <div class="container">
   <div class="table-responsive">
       <table class="table table-status">
@@ -41,6 +50,35 @@
         {% endfor %}
         </tbody>
       </table>
+    <ul class="pagination justify-content-center">
+
+        {% if page_obj.has_previous %}
+
+            {% if request.GET.curso %}
+            <li class="page-item"><a class="page-link" href="?page=1&curso={{request.GET.curso}}">&laquo; Primeira</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}&curso={{request.GET.curso}}">Anterior</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="?page=1">&laquo; Primeira</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+            {% endif %}
+
+        {% endif %}
+
+        <li class="page-item">
+            <span class="page-link">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.</span>
+        </li>
+
+        {% if page_obj.has_next %}
+            {% if request.GET.curso %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}&curso={{request.GET.curso}}">Próxima</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&curso={{request.GET.curso}}">Última &raquo;</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Próxima</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Última &raquo;</a></li>
+            {% endif %}
+        {% endif %}
+
+    </ul>
   </div>
 </div>
 

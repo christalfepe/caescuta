@@ -3,8 +3,8 @@ from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.forms.formsets import formset_factory
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
 from django.views.generic import TemplateView
+from django.core.paginator import Paginator
 
 
 from .models import Survey, Question, Answer, Submission
@@ -16,21 +16,27 @@ class LandingView(TemplateView):
 @login_required
 def survey_list(request):
     """User can view all their survey"""
-    surveys = Survey.objects.all().order_by("-created_at").all()
-    return render(request, "survey/list.html", {"survey": surveys})
+    pesquisas = Survey.objects.filter(is_active=True).order_by("-created_at").all()
+    paginator = Paginator(pesquisas, 3)
+    pages = request.GET.get('page')
+    surveys = paginator.get_page(pages)
+    return render(request, "survey/lista.html", {"surveys": surveys})
 
 @login_required
 def minha_lista(request):
     """User can view all their survey"""
-    surveys = Survey.objects.filter(creator=request.user).order_by("-created_at").all()
-    return render(request, "survey/list.html", {"survey": surveys})
+    pesquisas = Survey.objects.filter(creator=request.user).order_by("-created_at").all()
+    paginator = Paginator(pesquisas,3)
+    pages = request.GET.get('page')
+    surveys=paginator.get_page(pages)
+    return render(request, "survey/minhalista.html", {"surveys": surveys})
 
 @login_required
 def detail(request, pk):
     """User can view an active survey"""
     try:
         survey = Survey.objects.prefetch_related("question_set__option_set").get(
-            pk=pk, creator=request.user, is_active=True
+            pk=pk, creator=request.user
         )
     except Survey.DoesNotExist:
         raise Http404()
@@ -47,16 +53,13 @@ def detail(request, pk):
             num_answers = Answer.objects.filter(option=option).count()
             option.percent = 100.0 * num_answers / total_answers if total_answers else 0
 
-    host = request.get_host()
-    public_path = reverse("survey-start", args=[pk])
-    public_url = f"{request.scheme}://{host}{public_path}"
+
     num_submissions = survey.submission_set.filter(is_complete=True).count()
     return render(
         request,
-        "survey/detail.html",
+        "survey/detalhes.html",
         {
             "survey": survey,
-            "public_url": public_url,
             "questions": questions,
             "num_submissions": num_submissions,
         },
@@ -76,7 +79,7 @@ def create(request):
     else:
         form = SurveyForm()
 
-    return render(request, "survey/create.html", {"form": form})
+    return render(request, "survey/criar.html", {"form": form})
 
 
 @login_required
@@ -86,15 +89,29 @@ def delete(request, pk):
     if request.method == "POST":
         survey.delete()
 
-    return redirect("survey-list")
-
-
+    return redirect("minha-lista")
+@login_required
+def desativar(request, pk):
+    """User can delete an existing survey"""
+    survey = get_object_or_404(Survey, pk=pk, creator=request.user)
+    if request.method == "POST":
+        survey.is_active = False
+        survey.save()
+    return redirect("minha-lista")
+@login_required
+def ativar(request, pk):
+    """User can delete an existing survey"""
+    survey = get_object_or_404(Survey, pk=pk, creator=request.user)
+    if request.method == "POST":
+        survey.is_active = True
+        survey.save()
+    return redirect("minha-lista")
 @login_required
 def edit(request, pk):
     """User can add questions to a draft survey, then acitvate the survey"""
     try:
         survey = Survey.objects.prefetch_related("question_set__option_set").get(
-            pk=pk, creator=request.user, is_active=False
+            pk=pk, creator=request.user
         )
     except Survey.DoesNotExist:
         raise Http404()
@@ -105,7 +122,7 @@ def edit(request, pk):
         return redirect("survey-detail", pk=pk)
     else:
         questions = survey.question_set.all()
-        return render(request, "survey/edit.html", {"survey": survey, "questions": questions})
+        return render(request, "survey/editar.html", {"survey": survey, "questions": questions})
 
 
 @login_required
@@ -122,7 +139,7 @@ def question_create(request, pk):
     else:
         form = QuestionForm()
 
-    return render(request, "survey/question.html", {"survey": survey, "form": form})
+    return render(request, "survey/questao.html", {"survey": survey, "form": form})
 
 
 @login_required
@@ -142,7 +159,7 @@ def option_create(request, survey_pk, question_pk):
     options = question.option_set.all()
     return render(
         request,
-        "survey/options.html",
+        "survey/opcoes.html",
         {"survey": survey, "question": question, "options": options, "form": form},
     )
 
@@ -154,7 +171,7 @@ def start(request, pk):
         sub = Submission.objects.create(survey=survey)
         return redirect("survey-submit", survey_pk=pk, sub_pk=sub.pk)
 
-    return render(request, "survey/start.html", {"survey": survey})
+    return render(request, "survey/comecar.html", {"survey": survey})
 
 
 def submit(request, survey_pk, sub_pk):
@@ -194,7 +211,7 @@ def submit(request, survey_pk, sub_pk):
     question_forms = zip(questions, formset)
     return render(
         request,
-        "survey/submit.html",
+        "survey/submissao.html",
         {"survey": survey, "question_forms": question_forms, "formset": formset},
     )
 
@@ -202,6 +219,6 @@ def submit(request, survey_pk, sub_pk):
 def thanks(request, pk):
     """Survey-taker receives a thank-you message."""
     survey = get_object_or_404(Survey, pk=pk, is_active=True)
-    return render(request, "survey/thanks.html", {"survey": survey})
+    return render(request, "survey/obrigado.html", {"survey": survey})
 
 landing = LandingView.as_view()
