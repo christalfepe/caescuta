@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block titulo %}
+  {{ survey.title }}
+{% endblock %}
+
 {% block conteudo %}
 <div class="ui center aligned basic very padded segment">
     <h1 class="ui header dividing">Adicionar opções à questão</h1>
@@ -18,11 +22,13 @@
             {% csrf_token %}
             {% for field in form %}
             <div class="field {% if field.errors %}error{% endif %}">
-                <label>{{ field.label_tag }}</label>
+                <label>Opção</label>
                 {{ field }}
             </div>
             {% endfor %}
-            <button type="submit" class="ui primary button">Adicionar nova opção</button>
+            <div class="d-flex justify-content-center align-items-end">
+            <button type="submit" class="btn btn-primary">Adicionar nova opção</button>
+            </div>
             <div class="ui message error">
                 <div class="header">Tivemos alguns problemas</div>
                 <ul class="list">
@@ -38,10 +44,12 @@
             </div>
         </form>
         {% if options|length > 0 %}
+        <div class="d-flex justify-content-center align-items-end">
         <div class="ui divider"></div>
         <a href="{% url 'survey-edit' survey.pk %}">
-            <div class="ui button">Terminar de adicionar opções</div>
+            <div class="btn btn-success">Terminar de adicionar opções</div>
         </a>
+        </div>
         {% endif %}
     </div>
 </div>

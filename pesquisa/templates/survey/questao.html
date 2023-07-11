@@ -1,21 +1,27 @@
 {% extends "base.html" %}
 
+{% block titulo %}
+  {{ survey.title }}
+{% endblock %}
+
 {% block conteudo %}
 <div class="ui center aligned basic very padded segment">
     <h1 class="ui header">Criar nova questão</h1>
-    <div class="ui container left aligned">
-        <form class="ui form {% if form.errors %}error{% endif %}" method="post" novalidate>
+    <div class="d-flex justify-content-center">
+        <form class=" ui form {% if form.errors %}error{% endif %}" method="post" novalidate>
             {% csrf_token %}
             {% for field in form %}
             <div class="field {% if field.errors %}error{% endif %}">
-                <label>{{ field.label_tag }}</label>
+                <label>Questão</label>
                 {{ field }}
             </div>
             {% endfor %}
-            <button type="submit" class="ui primary button">Criar questão</button>
+            <div class="d-flex justify-content-center align-items-end">
+            <button type="submit" class="btn btn-primary">Criar questão</button>
             <a href="{% url 'survey-edit' survey.pk %}">
-                <div class="ui button">Cancelar</div>
+                <div class="btn btn-danger">Cancelar</div>
             </a>
+            </div>
             <div class="ui message error">
                 <div class="header">Tivemos alguns problemas</div>
                 <ul class="list">

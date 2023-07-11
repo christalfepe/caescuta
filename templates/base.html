@@ -24,7 +24,13 @@
     <link rel="icon" type="image/png" href="{% static 'img/cae.png' %}">
     <title>CAEscuta - {% block titulo %} {% endblock %}</title>
   </head>
-  <body style="background: #393939;">
+  <body style="background: #393939; color: white;
+    height: 100%;
+	padding: 0;
+	margin: 0;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;">
 
     {% include '_cabecalho.html' %}
     {% block conteudo %} {% endblock %}
