@@ -6,12 +6,24 @@
 
 {% block conteudo %}
 {% if user.is_anonymous %}
-<div class="d-flex justify-content-center">
-    <p>Você não tem acesso</p>
+<div style="margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)"class="d-flex justify-content-center">
+    <h5>Você não tem acesso!</h5>
+</div>
+<div style="margin: 0;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)" class="d-flex justify-content-center">
+    <p>Faça login para continuar</p>
     </div>
-<div class=" d-flex justify-content-center">
-
-    <a href="{% url 'login' %}" class="btn btn-primary col-2">Entrar</a>
+<div class="d-flex justify-content-center">
+    <a style=" position: absolute; top: 50%" href="{% url 'login' %}" class="btn btn-primary col-2">Entrar</a>
 </div>
 {% else %}
 <div class="mt-4 mb-4 d-flex justify-content-center">
@@ -24,7 +36,7 @@
         <a href="{% url 'lista-disciplina' %}" class="btn btn-primary col-8">Disciplinas</a>
         <a href="{% url 'lista-curso' %}" class="btn btn-primary col-8">Curso</a>
         {% if user.is_staff %}
-        <a href="{% url 'usuario' %}" class="btn btn-primary col-8">Usuario</a>
+        <a href="{% url 'usuario' %}" class="btn btn-primary col-8">Usuário</a>
         {% endif %}
     </div>
 </div>

@@ -2,10 +2,10 @@
 
 {% block conteudo %}
 <div class="ui center aligned basic very padded segment">
-    <h1 class="ui header dividing">Add options to question</h1>
+    <h1 class="ui header dividing">Adicionar opções à questão</h1>
     <div class="ui container left aligned">
         <h4 class="ui header">
-            Question: {{ question.prompt }}
+            Questão: {{ question.prompt }}
         </h4>
         <ul>
             {% for option in options %}
@@ -22,9 +22,9 @@
                 {{ field }}
             </div>
             {% endfor %}
-            <button type="submit" class="ui primary button">Add new option</button>
+            <button type="submit" class="ui primary button">Adicionar nova opção</button>
             <div class="ui message error">
-                <div class="header">We had some issues</div>
+                <div class="header">Tivemos alguns problemas</div>
                 <ul class="list">
                     {% for field in form %}
                     {% for error in field.errors %}
@@ -40,7 +40,7 @@
         {% if options|length > 0 %}
         <div class="ui divider"></div>
         <a href="{% url 'survey-edit' survey.pk %}">
-            <div class="ui button">Done adding options</div>
+            <div class="ui button">Terminar de adicionar opções</div>
         </a>
         {% endif %}
     </div>

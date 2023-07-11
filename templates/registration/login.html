@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
+
+{% block titulo %}
+  Login
+{% endblock %}
+
 {% block conteudo %}
-<div class="d-flex justify-content-center">
+<div style="margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)" class="d-flex justify-content-center">
     <form class="form-signin" method="post" autocomplete="off">
         {% csrf_token %}
         <h1 class="h3 mb-3 font-weight-normal">Informe seus dados</h1>
@@ -13,7 +23,7 @@
         <input type="password" id="password" name="password" class="form-control" placeholder="Informe sua senha" required>
         <br>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Acessar</button>
-        <p class="mt-5 mb-3 text-muted">&copy; {% now 'Y'%}</p> <!-- apresentar o ano -->
+        <!-- <p class="mt-5 mb-3 text-muted">&copy; {% now 'Y'%}</p>  apresentar o ano -->
     </form>
     </div>
 {% endblock %}

@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block titulo %}
+  Lista de espaços
+{% endblock %}
+
 {% block conteudo %}
 {% if user.is_anonymous %}
 <div class="d-flex justify-content-center">
@@ -25,7 +29,7 @@
 <hr>
 <div class="container">
   <div class="table-responsive">
-      <table class="table table-status">
+      <table class="table table-striped table-hover table-status">
         <thead>
           <tr>
             <th scope="col">Código do curso</th>

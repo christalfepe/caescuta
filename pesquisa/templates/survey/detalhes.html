@@ -1,21 +1,25 @@
 {% extends "base.html" %}
 
+{% block titulo %}
+  Detalhes
+{% endblock %}
+
 {% block conteudo %}
 <div class="d-flex justify-content-center">
     <h1 class="ui header">Pesquisa: {{ survey.title }}</h1>
 </div>
 <div class="d-flex justify-content-center">
-    <h3 class="ui header">Você tem {{ num_submissions }} respostas</h3>
+    Você tem {{ num_submissions }} respostas
 </div>
 <div class="d-flex justify-content-center">
-    <h1 class="ui header dividing">Resultados</h1>
+    <h3 class="ui header dividing">Resultados</h3>
 </div>
 <div class="d-flex justify-content-center">
     {% for question in questions %}
     <div class="ui basic padded segment left aligned">
-        <h4 class="ui header">
-            Questão{{ forloop.counter }} / {{ questions|length }}
-        </h4>
+        <h5 class="ui header">
+            Questão {{ forloop.counter }} / {{ questions|length }}
+        </h5>
         <p>
             {{ question.prompt }}
         </p>

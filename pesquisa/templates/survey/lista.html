@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block titulo %}
+  Pesquisas abertas
+{% endblock %}
+
 {% block conteudo %}
 <div class="d-flex justify-content-center">
        <h1 class="ui header">Pesquisas abertas</h1>
@@ -34,9 +38,8 @@
         </tbody>
     </table>
     {% else %}
-    <h2 class="ui header">Pesquisas
-        <div class="sub header">Não existe novas pesquisas abertas</div>
-    </h2>
+    <h2 class="d-flex justify-content-center">Não existem novas pesquisas abertas</h2>
+
     {% endif %}
 
 <div class="d-flex justify-content-center">

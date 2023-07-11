@@ -1,14 +1,18 @@
 {% load static %}
     <header><!-- inicio Cabecalho -->
-      <nav class="navbar navbar-expand-sm navbar-light bg-warning">
+      <nav style="background: #353535; width: auto;" class="navbar navbar-expand-sm navbar-dark">
         <div class="container">
 
           <a href="/" class="navbar-brand">
             <img src="{% static 'img/caesc.png' %}" width="100">
           </a>
+          {% if user.is_anonymous %}
+          <p> </p>
+          {% else %}
           <p>
             Seja bem-vindo(a) {{ user.get_full_name }}!
           </p>
+          {% endif %}
 
           <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
             <span class="navbar-toggler-icon"></span>
